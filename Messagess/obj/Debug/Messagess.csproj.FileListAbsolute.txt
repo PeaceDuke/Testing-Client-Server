@@ -1,0 +1,6 @@
+D:\very important\source\repos\Лаб2\Messagess\bin\Debug\Messagess.dll
+D:\very important\source\repos\Лаб2\Messagess\bin\Debug\Messagess.pdb
+D:\very important\source\repos\Лаб2\Messagess\obj\Debug\Messagess.csproj.CoreCompileInputs.cache
+D:\very important\source\repos\Лаб2\Messagess\obj\Debug\Messagess.dll
+D:\very important\source\repos\Лаб2\Messagess\obj\Debug\Messagess.pdb
+D:\very important\source\repos\Лаб2\Messagess\obj\Debug\Messagess.csprojAssemblyReference.cache

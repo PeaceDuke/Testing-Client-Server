@@ -1,0 +1,67 @@
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\Cient.exe.config
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\Cient.exe
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\Cient.pdb
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\RabbitMQ.Client.dll
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.dll
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\RabbitMQ.Client.xml
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.xml
+C:\Users\User\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\User\source\repos\Лаб2\Cient\obj\Debug\Cient.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Лаб2\Cient\obj\Debug\Cient.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Лаб2\Cient\obj\Debug\Cient.csproj.CopyComplete
+C:\Users\User\source\repos\Лаб2\Cient\obj\Debug\Cient.exe
+C:\Users\User\source\repos\Лаб2\Cient\obj\Debug\Cient.pdb
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\Cient.exe.config
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\Cient.exe
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\Cient.pdb
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\EntityFramework.dll
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\EntityFramework.SqlServer.dll
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\RabbitMQ.Client.dll
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.dll
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.EF6.dll
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.Linq.dll
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\EntityFramework.xml
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\EntityFramework.SqlServer.xml
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.xml
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\RabbitMQ.Client.xml
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.xml
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\System.Data.SQLite.dll.config
+D:\very important\source\repos\Лаб2\Cient\obj\Debug\Cient.csprojAssemblyReference.cache
+D:\very important\source\repos\Лаб2\Cient\obj\Debug\Cient.csproj.CoreCompileInputs.cache
+D:\very important\source\repos\Лаб2\Cient\obj\Debug\Cient.csproj.CopyComplete
+D:\very important\source\repos\Лаб2\Cient\obj\Debug\Cient.exe
+D:\very important\source\repos\Лаб2\Cient\obj\Debug\Cient.pdb
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\Messagess.dll
+D:\very important\source\repos\Лаб2\Cient\bin\Debug\Messagess.pdb
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\Cient.exe.config
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\Cient.exe
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\Cient.pdb
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\EntityFramework.dll
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\EntityFramework.SqlServer.dll
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\Messagess.dll
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\RabbitMQ.Client.dll
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\System.Data.SQLite.dll
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\System.Data.SQLite.EF6.dll
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\System.Data.SQLite.Linq.dll
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\Messagess.pdb
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\EntityFramework.xml
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\EntityFramework.SqlServer.xml
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.xml
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\RabbitMQ.Client.xml
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\System.Data.SQLite.xml
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\bin\Debug\System.Data.SQLite.dll.config
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\obj\Debug\Cient.csprojAssemblyReference.cache
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\obj\Debug\Cient.csproj.CoreCompileInputs.cache
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\obj\Debug\Cient.csproj.CopyComplete
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\obj\Debug\Cient.exe
+D:\very important\source\repos\Лаб2 — копия (2)\Cient\obj\Debug\Cient.pdb
