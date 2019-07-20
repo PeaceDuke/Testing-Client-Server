@@ -50,3 +50,21 @@ D:\very important\source\repos\Лаб2 — копия (2)\ServerWithSocket\obj\D
 D:\very important\source\repos\Лаб2 — копия (2)\ServerWithSocket\obj\Debug\ServerWithSocket.csproj.CopyComplete
 D:\very important\source\repos\Лаб2 — копия (2)\ServerWithSocket\obj\Debug\ServerWithSocket.exe
 D:\very important\source\repos\Лаб2 — копия (2)\ServerWithSocket\obj\Debug\ServerWithSocket.pdb
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\ServerWithSocket.exe.config
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\ServerWithSocket.exe
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\ServerWithSocket.pdb
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\Google.Protobuf.dll
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\Messagess.dll
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\MySql.Data.dll
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\RabbitMQ.Client.dll
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\Google.Protobuf.xml
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\Messagess.pdb
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.xml
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\MySql.Data.xml
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\bin\Debug\RabbitMQ.Client.xml
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\obj\Debug\ServerWithSocket.csprojAssemblyReference.cache
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\obj\Debug\ServerWithSocket.csproj.CoreCompileInputs.cache
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\obj\Debug\ServerWithSocket.csproj.CopyComplete
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\obj\Debug\ServerWithSocket.exe
+D:\very important\source\repos\Testing-Client-Server\ServerWithSocket\obj\Debug\ServerWithSocket.pdb

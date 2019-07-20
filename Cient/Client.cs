@@ -22,17 +22,20 @@ namespace Cient
     class Client
     {
         static bool testResult = true;
+        static int recivedMessageCount = 0;
 
         static void Main(string[] args)
         {
             Console.WriteLine("Идет подключение к сереру...");
             TcpClient testingTcpClient = null;
+            TcpClient availableThreadClient = null;
             do
             {
                 //попытка установки соединения
                 try
                 {
                     testingTcpClient = new TcpClient("127.0.0.1", 3456);
+                    availableThreadClient = new TcpClient("127.0.0.1", 3457);
                 }
                 catch (Exception e)
                 {
@@ -43,7 +46,7 @@ namespace Cient
             Console.Write("Введите адрес до дериктории с файлами: ");
             var testFilesPath = "C:\\Users\\Professional\\Desktop\\Tests";
             //var testFilesPath = Console.ReadLine();
-            ReadFiles(testingTcpClient, testFilesPath);
+            ReadFiles(testingTcpClient, availableThreadClient, testFilesPath);
             if(testResult)
             {
                 Console.WriteLine("Все файлы успешно прошли тестирование");
@@ -56,36 +59,39 @@ namespace Cient
             Console.ReadLine();
         }
 
-        //отправка сообщений на сервер
-        private static void SendMessage(NetworkStream availableThreadStream, NetworkStream testingStream, TestMessage message)
+        private static void ReciveResponce(NetworkStream availableThreadStream)
         {
-            var messageBuffer = ObjectToByteArray(message);
-            //клиент сообщает о том, что у него есть файлы для тестирования
-            availableThreadStream.Write(new byte[1], 0, 1);
             var responceBuffer = new byte[1024];
             //клиент ожидает, пока освободится какой-нибуь поток при этом получая результаты его работы
             var responceLenght = availableThreadStream.Read(responceBuffer, 0, responceBuffer.Length);
             //если поток закончил работу, он возвращает объект типа ResponceMessage
-            if(responceLenght > 1)
+            if (responceLenght > 1)
             {
                 var responce = (ResponseMessage)ByteArrayToObject(responceBuffer, responceLenght);
                 Console.WriteLine("{0}: {1}", responce.FileName, responce.Response);
                 if (!responce.Response)
                     testResult = false;
+                recivedMessageCount++;
             }
+        }
+
+        //отправка сообщений на сервер
+        private static void SendMessage(NetworkStream availableThreadStream, NetworkStream testingStream, TestMessage message)
+        {
+            var messageBuffer = ObjectToByteArray(message);
             //клиент отправляет текст на сервер в виде объекта типа TestMessage
+            //Console.WriteLine("Отаправка файла {0}", message.FileName);
             testingStream.Write(messageBuffer, 0, messageBuffer.Length);
+            ReciveResponce(availableThreadStream);
         }
         
         //чтение текста из файлов и инциализация 
-        private static void ReadFiles(TcpClient testingTcpClient, string directoryPath)
+        private static void ReadFiles(TcpClient testingTcpClient, TcpClient availableThreadClient, string directoryPath)
         {
             var filePaths = Directory.GetFiles(directoryPath, "*.txt");
             var testingStream = testingTcpClient.GetStream();
+            var availableThreadStream = availableThreadClient.GetStream();
             //для проверки доступных потоков создается еще одно подключение
-            var availableThreadListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 3457);
-            availableThreadListener.Start();
-            var availableThreadStream = availableThreadListener.AcceptTcpClient().GetStream();
             foreach (var filePath in filePaths)
             {
                 var reader = new StreamReader(filePath);
@@ -93,6 +99,10 @@ namespace Cient
                 var message = new TestMessage(Path.GetFileName(filePath), text);
                 SendMessage(availableThreadStream, testingStream, message);
             }
+            /*while(recivedMessageCount != filePaths.Length)
+            {
+                ReciveResponce(availableThreadStream);
+            }*/
         }
 
         //метод сериализации

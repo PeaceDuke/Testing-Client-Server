@@ -29,24 +29,18 @@ namespace ServerWithSocket.Models
             try
             {
                 testsStream = testsTcpclient.GetStream();
+                byte[] lastResponse = new byte[1];
                 while (testsTcpclient.Connected)
                 {
                     byte[] data = new byte[2048];
-                    byte[] lastResponse = new byte[1];
                     int bytes = 0;
                     //поток ожидает запроса от клинета, о необходимости обработать данные
-                    availableThreadStream.Read(new byte[1], 0, 1);
+                    bytes = testsStream.Read(data, 0, data.Length);
                     //поток сообщает о том, что он готов выполнять тестирования
                     availableThreadStream.Write(lastResponse, 0, lastResponse.Length);
-                    do
-                    {
-                        //поток считывает текст для тестирования
-                        bytes = testsStream.Read(data, 0, data.Length);
-                    }
-                    while (testsStream.DataAvailable);
                     if (bytes != 0)
                     {
-                        Console.WriteLine("Пооток {0} прочитал данные длинной {1}", numberOfThread, bytes);
+                        //Console.WriteLine("Пооток {0} прочитал данные длинной {1}", numberOfThread, bytes);
                         
                         var message = (TestMessage)ByteArrayToObject(data, bytes);
                         var response = new ResponseMessage(message.FileName, true);

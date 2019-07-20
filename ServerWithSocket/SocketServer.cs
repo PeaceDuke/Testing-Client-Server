@@ -33,14 +33,17 @@ namespace ServerWithQueue
         public static void StartProcessData(int n)
         {
             TcpListener testsListner = null;
+            TcpListener availableThreadListener = null;
             try
             {
                 testsListner = new TcpListener(IPAddress.Parse("127.0.0.1"), 3456);
                 testsListner.Start();
+                availableThreadListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 3457);
+                availableThreadListener.Start();
                 Console.WriteLine("Ожидание подключений...");
                 //сревер подключается к клиенту, для оправки сообщений о доступных потоках
                 TcpClient testsTcpClient = testsListner.AcceptTcpClient();
-                var availableThreadsClient = new TcpClient("127.0.0.1", 3457);
+                TcpClient availableThreadsClient = availableThreadListener.AcceptTcpClient();
                 //содается n потоков, каждый из которых обрабатывает сообщения
                 for (int i = 0; i < n; i++)
                 {
@@ -57,6 +60,8 @@ namespace ServerWithQueue
             {
                 if (testsListner != null)
                     testsListner.Stop();
+                if (availableThreadListener != null)
+                    availableThreadListener.Stop();
             }
         }
     }
