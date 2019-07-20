@@ -68,14 +68,9 @@ D:\very important\source\repos\Лаб2 — копия (2)\Cient\obj\Debug\Cient.
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\Cient.exe.config
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\Cient.exe
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\Cient.pdb
-D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\EntityFramework.dll
-D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\EntityFramework.SqlServer.dll
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\Messagess.dll
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
-D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\RabbitMQ.Client.dll
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\System.Data.SQLite.dll
-D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\System.Data.SQLite.EF6.dll
-D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\System.Data.SQLite.Linq.dll
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\Messagess.pdb
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\EntityFramework.xml
 D:\very important\source\repos\Testing-Client-Server\Cient\bin\Debug\EntityFramework.SqlServer.xml

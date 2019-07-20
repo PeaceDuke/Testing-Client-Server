@@ -33,22 +33,26 @@ namespace ServerWithQueue
         public static void StartProcessData(int n)
         {
             TcpListener testsListner = null;
-            TcpListener availableThreadListener = null;
+            TcpListener availableThreadListner = null;
+            TcpListener responceListner = null;
             try
             {
                 testsListner = new TcpListener(IPAddress.Parse("127.0.0.1"), 3456);
                 testsListner.Start();
-                availableThreadListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 3457);
-                availableThreadListener.Start();
+                availableThreadListner = new TcpListener(IPAddress.Parse("127.0.0.1"), 3457);
+                availableThreadListner.Start();
+                responceListner = new TcpListener(IPAddress.Parse("127.0.0.1"), 3458);
+                responceListner.Start();
                 Console.WriteLine("Ожидание подключений...");
-                //сревер подключается к клиенту, для оправки сообщений о доступных потоках
                 TcpClient testsTcpClient = testsListner.AcceptTcpClient();
-                TcpClient availableThreadsClient = availableThreadListener.AcceptTcpClient();
+                TcpClient availableThreadsClient = availableThreadListner.AcceptTcpClient();
+                TcpClient responceClient = responceListner.AcceptTcpClient();
                 //содается n потоков, каждый из которых обрабатывает сообщения
                 for (int i = 0; i < n; i++)
                 {
-                    ProcessComponent processObject = new ProcessComponent(i, testsTcpClient, availableThreadsClient);
+                    ProcessComponent processObject = new ProcessComponent(i, testsTcpClient, availableThreadsClient, responceClient);
                     Thread processThread = new Thread(new ThreadStart(processObject.Process));
+                    Thread.Sleep(200);
                     processThread.Start();
                 }
             }
@@ -60,8 +64,8 @@ namespace ServerWithQueue
             {
                 if (testsListner != null)
                     testsListner.Stop();
-                if (availableThreadListener != null)
-                    availableThreadListener.Stop();
+                if (availableThreadListner != null)
+                    availableThreadListner.Stop();
             }
         }
     }

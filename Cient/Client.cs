@@ -22,7 +22,7 @@ namespace Cient
     class Client
     {
         static bool testResult = true;
-        static int recivedMessageCount = 0;
+        static List<Task> responseTasks = new List<Task>();
 
         static void Main(string[] args)
         {
@@ -47,6 +47,7 @@ namespace Cient
             var testFilesPath = "C:\\Users\\Professional\\Desktop\\Tests";
             //var testFilesPath = Console.ReadLine();
             ReadFiles(testingTcpClient, availableThreadClient, testFilesPath);
+            WaitTask();
             if(testResult)
             {
                 Console.WriteLine("Все файлы успешно прошли тестирование");
@@ -59,30 +60,41 @@ namespace Cient
             Console.ReadLine();
         }
 
-        private static void ReciveResponce(NetworkStream availableThreadStream)
+        private static void WaitTask()
         {
-            var responceBuffer = new byte[1024];
-            //клиент ожидает, пока освободится какой-нибуь поток при этом получая результаты его работы
-            var responceLenght = availableThreadStream.Read(responceBuffer, 0, responceBuffer.Length);
-            //если поток закончил работу, он возвращает объект типа ResponceMessage
-            if (responceLenght > 1)
+            foreach(var task in responseTasks)
             {
-                var responce = (ResponseMessage)ByteArrayToObject(responceBuffer, responceLenght);
-                Console.WriteLine("{0}: {1}", responce.FileName, responce.Response);
-                if (!responce.Response)
-                    testResult = false;
-                recivedMessageCount++;
+                task.Wait();
             }
         }
 
+        private static void readStream(NetworkStream responseStream)
+        {
+            var responceBuffer = new byte[1024];
+            var buffSize = responseStream.Read(responceBuffer, 0, responceBuffer.Length);
+            var responce = (ResponseMessage)ByteArrayToObject(responceBuffer, buffSize);
+            Console.WriteLine("{0}: {1}", responce.FileName, responce.Response);
+            if(!responce.Response)
+            {
+                testResult = false;
+            }
+        }
+
+        private static void GetResponse(NetworkStream responseStream)
+        {
+            Task responseTask = new Task(() => readStream(responseStream));
+            responseTasks.Add(responseTask);
+            responseTask.Start();
+        }
+
+        
         //отправка сообщений на сервер
         private static void SendMessage(NetworkStream availableThreadStream, NetworkStream testingStream, TestMessage message)
         {
             var messageBuffer = ObjectToByteArray(message);
             //клиент отправляет текст на сервер в виде объекта типа TestMessage
-            //Console.WriteLine("Отаправка файла {0}", message.FileName);
             testingStream.Write(messageBuffer, 0, messageBuffer.Length);
-            ReciveResponce(availableThreadStream);
+            availableThreadStream.Read(new byte[1], 0, 1);
         }
         
         //чтение текста из файлов и инциализация 
@@ -91,6 +103,7 @@ namespace Cient
             var filePaths = Directory.GetFiles(directoryPath, "*.txt");
             var testingStream = testingTcpClient.GetStream();
             var availableThreadStream = availableThreadClient.GetStream();
+            var responseStream = new TcpClient("127.0.0.1", 3458).GetStream();
             //для проверки доступных потоков создается еще одно подключение
             foreach (var filePath in filePaths)
             {
@@ -98,11 +111,8 @@ namespace Cient
                 var text = reader.ReadToEnd();
                 var message = new TestMessage(Path.GetFileName(filePath), text);
                 SendMessage(availableThreadStream, testingStream, message);
+                GetResponse(responseStream);
             }
-            /*while(recivedMessageCount != filePaths.Length)
-            {
-                ReciveResponce(availableThreadStream);
-            }*/
         }
 
         //метод сериализации

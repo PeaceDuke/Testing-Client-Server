@@ -14,22 +14,23 @@ namespace ServerWithSocket.Models
     {
         public TcpClient testsTcpclient;
         public TcpClient availableClient;
+        public TcpClient responceClient;
         public int numberOfThread;
-        public ProcessComponent(int n, TcpClient tcpClient, TcpClient _availableClient)
+        public ProcessComponent(int n, TcpClient tcpClient, TcpClient _availableClient, TcpClient _responceClient)
         {
             testsTcpclient = tcpClient;
             numberOfThread = n;
             availableClient = _availableClient;
+            responceClient = _responceClient;
         }
 
         public void Process()
         {
-            NetworkStream testsStream = null;
+            var testsStream = testsTcpclient.GetStream();
             var availableThreadStream = availableClient.GetStream();
+            var responceStream = responceClient.GetStream();
             try
             {
-                testsStream = testsTcpclient.GetStream();
-                byte[] lastResponse = new byte[1];
                 while (testsTcpclient.Connected)
                 {
                     byte[] data = new byte[2048];
@@ -37,8 +38,8 @@ namespace ServerWithSocket.Models
                     //поток ожидает запроса от клинета, о необходимости обработать данные
                     bytes = testsStream.Read(data, 0, data.Length);
                     //поток сообщает о том, что он готов выполнять тестирования
-                    availableThreadStream.Write(lastResponse, 0, lastResponse.Length);
-                    if (bytes != 0)
+                    availableThreadStream.Write(new byte[1], 0, 1);
+                    if (bytes > 1)
                     {
                         //Console.WriteLine("Пооток {0} прочитал данные длинной {1}", numberOfThread, bytes);
                         
@@ -55,10 +56,12 @@ namespace ServerWithSocket.Models
                         }
                         //ожидание для имитации высокой нагрузки
                         Random random = new Random();
-                        Thread.Sleep(random.Next(1000,5000));
-                        Console.WriteLine("{0}: {1}", response.FileName, response.Response);
+                        var time = random.Next(1000, 5000);
+                        Thread.Sleep(time);
+                        Console.WriteLine("{0}  {1}: {2}", time, response.FileName, response.Response);
                         //сохраняем результат для дальнейшей отправки
-                        lastResponse = ObjectToByteArray(response);
+                        var responseArray = ObjectToByteArray(response);
+                        responceStream.Write(responseArray, 0, responseArray.Length);
                     }
                 }
             }
