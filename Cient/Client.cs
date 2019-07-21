@@ -87,22 +87,29 @@ namespace Cient
             testingStream.Write(messageBuffer, 0, messageBuffer.Length);
             availableThreadStream.Read(new byte[1], 0, 1);
         }
-        
+
         //чтение текста из файлов и инциализация 
         private static void ReadFiles(TcpClient testingTcpClient, TcpClient availableThreadClient, string directoryPath)
         {
             var filePaths = Directory.GetFiles(directoryPath, "*.txt");
-            var testingStream = testingTcpClient.GetStream();
-            var availableThreadStream = availableThreadClient.GetStream();
-            var responseStream = new TcpClient("127.0.0.1", 3458).GetStream();
-            //для проверки доступных потоков создается еще одно подключение
-            foreach (var filePath in filePaths)
+            if (filePaths.Length > 127)
             {
-                var reader = new StreamReader(filePath);
-                var text = reader.ReadToEnd();
-                var message = new TestMessage(Path.GetFileName(filePath), text);
-                SendMessage(availableThreadStream, testingStream, message);
-                GetResponse(responseStream);
+                Console.WriteLine("В выбранной дериктории слишком много файлов, установленно базовое ограниечение в 127");
+            }
+            else
+            {
+                var testingStream = testingTcpClient.GetStream();
+                var availableThreadStream = availableThreadClient.GetStream();
+                var responseStream = new TcpClient("127.0.0.1", 3458).GetStream();
+                //для проверки доступных потоков создается еще одно подключение
+                foreach (var filePath in filePaths)
+                {
+                    var reader = new StreamReader(filePath);
+                    var text = reader.ReadToEnd();
+                    var message = new TestMessage(Path.GetFileName(filePath), text);
+                    SendMessage(availableThreadStream, testingStream, message);
+                    GetResponse(responseStream);
+                }
             }
         }
 
