@@ -83,3 +83,15 @@ D:\very important\source\repos\Testing-Client-Server\Cient\obj\Debug\Cient.cspro
 D:\very important\source\repos\Testing-Client-Server\Cient\obj\Debug\Cient.csproj.CopyComplete
 D:\very important\source\repos\Testing-Client-Server\Cient\obj\Debug\Cient.exe
 D:\very important\source\repos\Testing-Client-Server\Cient\obj\Debug\Cient.pdb
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\obj\Debug\Cient.exe
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\obj\Debug\Cient.pdb
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\bin\Debug\Cient.exe.config
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\bin\Debug\Cient.exe
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\bin\Debug\Cient.pdb
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\bin\Debug\Messagess.dll
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\bin\Debug\Messagess.pdb
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.xml
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\obj\Debug\Cient.csprojAssemblyReference.cache
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\obj\Debug\Cient.csproj.CoreCompileInputs.cache
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Cient\obj\Debug\Cient.csproj.CopyComplete

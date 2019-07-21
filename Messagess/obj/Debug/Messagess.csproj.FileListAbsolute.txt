@@ -10,3 +10,9 @@ D:\very important\source\repos\Testing-Client-Server\Messagess\obj\Debug\Message
 D:\very important\source\repos\Testing-Client-Server\Messagess\obj\Debug\Messagess.csproj.CoreCompileInputs.cache
 D:\very important\source\repos\Testing-Client-Server\Messagess\obj\Debug\Messagess.dll
 D:\very important\source\repos\Testing-Client-Server\Messagess\obj\Debug\Messagess.pdb
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Messagess\bin\Debug\Messagess.dll
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Messagess\bin\Debug\Messagess.pdb
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Messagess\obj\Debug\Messagess.csprojAssemblyReference.cache
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Messagess\obj\Debug\Messagess.csproj.CoreCompileInputs.cache
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Messagess\obj\Debug\Messagess.dll
+C:\Users\Ирина\Documents\GitHub\Testing-Client-Server\Messagess\obj\Debug\Messagess.pdb
