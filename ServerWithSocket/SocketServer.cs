@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using ServerWithSocket.Models;
+using System;
 using System.Net;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System.Threading;
 using System.Net.Sockets;
-using System.Security.Cryptography;
-using System.Text;
-using ServerWithSocket.Models;
+using System.Threading;
 
 namespace ServerWithQueue
 {
@@ -32,11 +24,12 @@ namespace ServerWithQueue
 
         public static void StartProcessData(int n)
         {
-            TcpListener testsListner = null;
-            TcpListener availableThreadListner = null;
-            TcpListener responceListner = null;
+            TcpListener testsListner = null; //подключение для отправки тестовых файло
+            TcpListener availableThreadListner = null;  //подключение для сигнала от свободных п
+            TcpListener responceListner = null; //подключнеие для ответов от потоков
             try
             {
+                //создаются прослушивающие подключения
                 testsListner = new TcpListener(IPAddress.Parse("127.0.0.1"), 3456);
                 testsListner.Start();
                 availableThreadListner = new TcpListener(IPAddress.Parse("127.0.0.1"), 3457);
@@ -44,6 +37,7 @@ namespace ServerWithQueue
                 responceListner = new TcpListener(IPAddress.Parse("127.0.0.1"), 3458);
                 responceListner.Start();
                 Console.WriteLine("Ожидание подключений...");
+                //создаются подключения
                 TcpClient testsTcpClient = testsListner.AcceptTcpClient();
                 TcpClient availableThreadsClient = availableThreadListner.AcceptTcpClient();
                 TcpClient responceClient = responceListner.AcceptTcpClient();
@@ -52,6 +46,7 @@ namespace ServerWithQueue
                 {
                     ProcessComponent processObject = new ProcessComponent(i, testsTcpClient, availableThreadsClient, responceClient);
                     Thread processThread = new Thread(new ThreadStart(processObject.Process));
+                    //каждый поток запускается с небольшой заержкой для генерации рандомных чисел
                     Thread.Sleep(200);
                     processThread.Start();
                 }
@@ -66,6 +61,8 @@ namespace ServerWithQueue
                     testsListner.Stop();
                 if (availableThreadListner != null)
                     availableThreadListner.Stop();
+                if (responceListner != null)
+                    responceListner.Stop();
             }
         }
     }

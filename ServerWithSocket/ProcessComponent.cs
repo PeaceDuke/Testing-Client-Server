@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
+﻿using Messagess;
+using System;
+using System.IO;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
-using Messagess;
+using System.Threading;
 
 namespace ServerWithSocket.Models
 {
     public class ProcessComponent
     {
-        public TcpClient testsTcpclient;
-        public TcpClient availableClient;
-        public TcpClient responceClient;
+        public TcpClient testsTcpclient; //подключение для отправки тестовых файлов
+        public TcpClient availableClient; //подключение для сигнала от свободных потоков
+        public TcpClient responceClient; //подключнеие для ответов от потоков
         public int numberOfThread;
+
         public ProcessComponent(int n, TcpClient tcpClient, TcpClient _availableClient, TcpClient _responceClient)
         {
             testsTcpclient = tcpClient;
@@ -26,6 +24,7 @@ namespace ServerWithSocket.Models
 
         public void Process()
         {
+            //получение потоков для каждого подключения
             var testsStream = testsTcpclient.GetStream();
             var availableThreadStream = availableClient.GetStream();
             var responceStream = responceClient.GetStream();
@@ -37,7 +36,7 @@ namespace ServerWithSocket.Models
                     int bytes = 0;
                     //поток ожидает запроса от клинета, о необходимости обработать данные
                     bytes = testsStream.Read(data, 0, data.Length);
-                    //поток сообщает о том, что он готов выполнять тестирования
+                    //поток сообщает о том, что он готов выполнять тестирование
                     availableThreadStream.Write(new byte[1], 0, 1);
                     if (bytes > 1)
                     {
@@ -61,6 +60,7 @@ namespace ServerWithSocket.Models
                         Console.WriteLine("{0}  {1}: {2}", time, response.FileName, response.Response);
                         //сохраняем результат для дальнейшей отправки
                         var responseArray = ObjectToByteArray(response);
+                        //через отдельный поток отправляется ответ
                         responceStream.Write(responseArray, 0, responseArray.Length);
                     }
                 }
@@ -75,6 +75,14 @@ namespace ServerWithSocket.Models
                     testsStream.Close();
                 if (testsTcpclient != null)
                     testsTcpclient.Close();
+                if (availableThreadStream != null)
+                    availableThreadStream.Close();
+                if (responceClient != null)
+                    responceClient.Close();
+                if (availableClient != null)
+                    availableClient.Close();
+                if (responceStream != null)
+                    responceStream.Close();
             }
         }
 

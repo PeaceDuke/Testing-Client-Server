@@ -1,21 +1,10 @@
-﻿using System;
+﻿using Messagess;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
-using RabbitMQ;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System.Data.SQLite;
-using System.Security.Cryptography;
-using Messagess;
 
 namespace Cient
 {
@@ -44,8 +33,7 @@ namespace Cient
             } while (testingTcpClient == null);
             Console.WriteLine("Соединение с сервером установлено!");
             Console.Write("Введите адрес до дериктории с файлами: ");
-            var testFilesPath = "C:\\Users\\Professional\\Desktop\\Tests";
-            //var testFilesPath = Console.ReadLine();
+            var testFilesPath = Console.ReadLine();
             ReadFiles(testingTcpClient, availableThreadClient, testFilesPath);
             WaitTask();
             if(testResult)
@@ -60,6 +48,7 @@ namespace Cient
             Console.ReadLine();
         }
 
+        //проверка, что все ответы получены
         private static void WaitTask()
         {
             foreach(var task in responseTasks)
@@ -68,7 +57,8 @@ namespace Cient
             }
         }
 
-        private static void readStream(NetworkStream responseStream)
+        //чтение оветов из потока
+        private static void ReadResponseStream(NetworkStream responseStream)
         {
             var responceBuffer = new byte[1024];
             var buffSize = responseStream.Read(responceBuffer, 0, responceBuffer.Length);
@@ -80,9 +70,10 @@ namespace Cient
             }
         }
 
+        //задания для получения ответов от сервера
         private static void GetResponse(NetworkStream responseStream)
         {
-            Task responseTask = new Task(() => readStream(responseStream));
+            Task responseTask = new Task(() => ReadResponseStream(responseStream));
             responseTasks.Add(responseTask);
             responseTask.Start();
         }
